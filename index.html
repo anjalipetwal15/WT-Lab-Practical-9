@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>WT Lab Practical 9 - Frameworks & Libraries</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Segoe UI',sans-serif;
+      background:linear-gradient(135deg,#1e1e2f,#4a00e0);
+      min-height:100vh;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    .container{
+      padding:40px 15px;
+    }
+
+    /* Heading */
+    h1{
+      font-size:clamp(2rem,5vw,4rem);
+      font-weight:700;
+      text-align:center;
+      margin-bottom:20px;
+      transition:0.4s;
+      text-shadow:2px 2px 10px rgba(0,0,0,0.4);
+    }
+
+    /* Student Info */
+    .student-info{
+      background:rgba(255,255,255,0.1);
+      border:1px solid rgba(255,255,255,0.2);
+      backdrop-filter:blur(10px);
+      padding:18px;
+      border-radius:15px;
+      text-align:center;
+      margin-bottom:35px;
+    }
+
+    /* Buttons */
+    .btn-custom{
+      background:linear-gradient(135deg,#8e2de2,#4a00e0);
+      border:none;
+      color:white;
+      font-weight:600;
+      padding:12px 25px;
+      border-radius:12px;
+      transition:0.3s;
+    }
+
+    .btn-custom:hover{
+      transform:translateY(-3px) scale(1.03);
+      box-shadow:0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    /* Cards */
+    .card{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.1);
+      backdrop-filter:blur(10px);
+      border-radius:20px;
+      transition:0.4s;
+      color:white;
+      height:100%;
+      overflow:hidden;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 15px 30px rgba(142,45,226,0.4);
+    }
+
+    .card-body{
+      padding:30px 20px;
+      text-align:center;
+    }
+
+    .card-body i{
+      font-size:3.5rem;
+      margin-bottom:15px;
+      display:block;
+    }
+
+    .card-title{
+      font-size:1.4rem;
+      font-weight:700;
+    }
+
+    /* Search Section */
+    .search-section{
+      margin-top:40px;
+      background:rgba(255,255,255,0.1);
+      border:1px solid rgba(255,255,255,0.15);
+      backdrop-filter:blur(10px);
+      padding:25px;
+      border-radius:20px;
+    }
+
+    #searchBox{
+      border:none;
+      padding:14px;
+      border-radius:12px;
+      font-size:16px;
+    }
+
+    #searchBox:focus{
+      outline:none;
+      box-shadow:none;
+    }
+
+    #output{
+      margin-top:20px;
+      background:rgba(0,0,0,0.3);
+      border-left:5px solid #8e2de2;
+      padding:20px;
+      border-radius:12px;
+      min-height:100px;
+    }
+
+    .result-card{
+      background:rgba(255,255,255,0.08);
+      padding:15px;
+      border-radius:12px;
+      margin-bottom:12px;
+      transition:0.3s;
+    }
+
+    .result-card:hover{
+      background:rgba(255,255,255,0.15);
+    }
+
+    /* Footer */
+    footer{
+      text-align:center;
+      margin-top:40px;
+      padding-bottom:20px;
+      opacity:0.8;
+    }
+
+    /* Responsive */
+    @media(max-width:768px){
+
+      .container{
+        padding-top:25px;
+      }
+
+      .search-section{
+        padding:18px;
+      }
+
+      .btn-custom{
+        width:100%;
+        margin-top:10px;
+      }
+
+      .card-body{
+        padding:25px 15px;
+      }
+    }
+
+    @media(max-width:480px){
+
+      h1{
+        font-size:2rem;
+      }
+
+      .card-body i{
+        font-size:3rem;
+      }
+
+      #searchBox{
+        margin-bottom:12px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Heading -->
+  <h1 id="mainHeading">Frameworks & Libraries</h1>
+
+  <!-- Student Info -->
+  <div class="student-info">
+    <h5>Name: Anjali Petwal</h5>
+    <p class="mb-0">Roll No: DD241104301026</p>
+  </div>
+
+  <!-- Button -->
+  <div class="text-center mb-5">
+    <button class="btn btn-custom" id="changeBtn">
+      <i class="fa-solid fa-pen-to-square"></i>
+      Change Heading
+    </button>
+  </div>
+
+  <!-- Cards -->
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <i class="fa-brands fa-bootstrap text-primary"></i>
+          <h5 class="card-title">Bootstrap</h5>
+          <p>Responsive CSS framework for modern websites.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <i class="fa-brands fa-js text-warning"></i>
+          <h5 class="card-title">jQuery</h5>
+          <p>Simplifies DOM manipulation and AJAX requests.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <i class="fa-brands fa-react text-info"></i>
+          <h5 class="card-title">React</h5>
+          <p>Component-based JavaScript library for UI.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <i class="fa-brands fa-vuejs text-success"></i>
+          <h5 class="card-title">Vue.js</h5>
+          <p>Progressive framework for building interfaces.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <i class="fa-brands fa-angular text-danger"></i>
+          <h5 class="card-title">Angular</h5>
+          <p>Powerful TypeScript-based web framework.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <i class="fa-solid fa-server text-success"></i>
+          <h5 class="card-title">AJAX</h5>
+          <p>Fetch data asynchronously without page reload.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- AJAX Section -->
+  <div class="search-section">
+
+    <h3 class="mb-4">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      AJAX Data Fetch Demo
+    </h3>
+
+    <div class="row g-3">
+
+      <div class="col-md-8">
+        <input type="text"
+               id="searchBox"
+               class="form-control"
+               placeholder="Search topics like bootstrap, jquery, ajax">
+      </div>
+
+      <div class="col-md-4">
+        <button class="btn btn-custom w-100" id="loadBtn">
+          <i class="fa-solid fa-download"></i>
+          Load Posts
+        </button>
+      </div>
+
+    </div>
+
+    <div id="output">
+      <em style="color:#ccc;">
+        Search results will appear here...
+      </em>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2026 Anjali Petwal | WT Lab Practical 9
+  </footer>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+  // Change Heading using jQuery
+  $("#changeBtn").click(function(){
+
+    $("#mainHeading").fadeOut(300,function(){
+
+      if($("#mainHeading").text() === "Frameworks & Libraries"){
+
+        $("#mainHeading")
+        .text("Modern Web Development Tools")
+        .css("color","#00e5ff");
+
+      }else{
+
+        $("#mainHeading")
+        .text("Frameworks & Libraries")
+        .css("color","white");
+      }
+
+      $("#mainHeading").fadeIn(300);
+    });
+
+  });
+
+  // AJAX Demo
+  $("#loadBtn").click(function(){
+
+    const search = $("#searchBox").val().trim();
+
+    if(search === ""){
+      $("#output").html(`
+        <span style="color:#ff7675;">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          Please enter a search term
+        </span>
+      `);
+      return;
+    }
+
+    // Loading State
+    $("#output").html(`
+      <div class="text-center">
+        <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
+        <p class="mt-2">Loading data...</p>
+      </div>
+    `);
+
+    // Fake AJAX Delay
+    setTimeout(function(){
+
+      $("#output").html(`
+
+        <div class="result-card">
+          <h5>📘 Getting Started with ${search}</h5>
+          <p>Learn basics of ${search} with responsive UI examples.</p>
+        </div>
+
+        <div class="result-card">
+          <h5>⚡ ${search} using jQuery & AJAX</h5>
+          <p>Understand dynamic content loading with AJAX requests.</p>
+        </div>
+
+        <div class="result-card">
+          <h5>🚀 Advanced ${search} Concepts</h5>
+          <p>Explore modern development practices and frameworks.</p>
+        </div>
+
+      `);
+
+    },1000);
+
+  });
+
+</script>
+
+</body>
+</html>
